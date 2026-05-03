@@ -1,0 +1,27 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signup-container {
+    margin-top: 80px;
+    max-width: 450px;
+    background: #F8F9FA;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.error-msg {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    height: 25px;
+    width: 300px;
+    display: block;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
