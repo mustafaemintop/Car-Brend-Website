@@ -1,39 +1,68 @@
-const counters = document.querySelectorAll('.counter');
 
-const startCounter = (counter) => {
-    counter.innerText = '0';
+var counters = document.querySelectorAll(".counter");
 
-    const updateCounter = () => {
-        const target = +counter.getAttribute('data-target');
-        const c = +counter.textContent;
-        const increment = target / 200;
+// =======================================================================================
+function startCounter(counter) {
+    counter.innerText = "0";
 
-        if (c < target) {
+    function update() {
+        var target = Number(counter.getAttribute("data-target"));
+        var current = Number(counter.innerText);
+
+        var step = target / 200;
+
+        if (current < target) {
             if (Number.isInteger(target)) {
-                counter.textContent = Math.ceil(c + increment);
-            } else {
-                counter.textContent = (c + increment).toFixed(1);
+                counter.innerText = Math.ceil(current + step);
+            } 
+            else {
+                counter.innerText = (current + step).toFixed(1);
             }
-            setTimeout(updateCounter, 10);
-        } else {
-            counter.textContent = target;
+
+            setTimeout(update, 10);
+        } 
+        else {
+            counter.innerText = target;
         }
-    };
+    }
 
-    updateCounter();
-};
+    update();
+}
 
-const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
+// =======================================================================================
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
         if (entry.isIntersecting) {
             startCounter(entry.target);
-            obs.unobserve(entry.target); 
+            observer.unobserve(entry.target);
         }
     });
 }, {
-    threshold: 0.5 
+    threshold: 0.5
 });
 
-counters.forEach(counter => {
+
+counters.forEach(function(counter) {
     observer.observe(counter);
 });
+
+// animation =======================================================================
+function revealElements() {
+    var elements = document.querySelectorAll(".reveal-left, .reveal-right");
+
+    elements.forEach(function(el) {
+        var windowHeight = window.innerHeight;
+        var elementTop = el.getBoundingClientRect().top;
+
+        var visibleDistance = 150;
+
+        if (elementTop < windowHeight - visibleDistance) {
+            el.classList.add("reveal-active");
+        }
+    });
+}
+
+// ========================================================================================
+window.addEventListener("scroll", revealElements);
+
+revealElements();

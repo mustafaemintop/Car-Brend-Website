@@ -108,22 +108,37 @@
     border-radius: 8px;
     cursor: pointer;
     padding: 0;
-    overflow: hidden; /* Resim taşarsa gizle */
+    overflow: hidden; 
     transition: 0.3s;
 }
 
-/* Jant butonunun içindeki resmi sığdır */
 .wheel-btn img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Seçili butonu belli et */
 .selected {
     border: 3px solid #000 !important;
 }
 
 .color-btn:hover, .wheel-btn:hover {
     transform: scale(1.1);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-100px); 
+    transition: all 1s ease-out;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(100px); 
+    transition: all 1s ease-out;
+}
+
+.reveal-active {
+    opacity: 1;
+    transform: translateX(0);
 }

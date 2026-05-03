@@ -1,37 +1,48 @@
-// Ana resmi bul
-const mainImage = document.getElementById('mainCarImage');
 
-// Default değerleri al
-let selectedColor = mainImage.getAttribute('data-default-color');
-let selectedWheel = mainImage.getAttribute('data-default-wheel');
+var mainImage = document.getElementById("mainCarImage");
 
-const colorButtons = document.querySelectorAll('.color-btn');
-const wheelButtons = document.querySelectorAll('.wheel-btn');
+var selectedColor = mainImage.getAttribute("data-default-color");
+var selectedWheel = mainImage.getAttribute("data-default-wheel");
 
-// Renk seçimi
-colorButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelector('.color-btn.selected')?.classList.remove('selected');
-        btn.classList.add('selected');
+var colorButtons = document.querySelectorAll(".color-btn");
+var wheelButtons = document.querySelectorAll(".wheel-btn");
 
-        selectedColor = btn.getAttribute('data-color');
+// ============================================================================================================
+colorButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+
+        var activeColor = document.querySelector(".color-btn.selected");
+        if (activeColor) {
+            activeColor.classList.remove("selected");
+        }
+
+        button.classList.add("selected");
+
+        selectedColor = button.getAttribute("data-color");
+
         updateImage();
     });
 });
 
-// Jant seçimi
-wheelButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelector('.wheel-btn.selected')?.classList.remove('selected');
-        btn.classList.add('selected');
+// =============================================================================================================
+wheelButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
 
-        selectedWheel = btn.getAttribute('data-wheel');
+        var activeWheel = document.querySelector(".wheel-btn.selected");
+        if (activeWheel) {
+            activeWheel.classList.remove("selected");
+        }
+
+        button.classList.add("selected");
+
+        selectedWheel = button.getAttribute("data-wheel");
+
         updateImage();
     });
 });
 
-// Resmi güncelle
+// ===============================================================================================================
 function updateImage() {
-    const imageName = `${selectedColor}-${selectedWheel}.jpg`;
+    var imageName = selectedColor + "-" + selectedWheel + ".jpg";
     mainImage.src = imageName;
 }

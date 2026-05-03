@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
-    <title>erdemin araba</title>
+    <title>Car Brend</title>
 
     <style>
         body {
@@ -17,7 +17,7 @@
     </style>
 
 </head>
-
+<!--======================================================================================================================================-->
 <body>
 
     <div class="menu">
@@ -25,12 +25,13 @@
             <a href="#models-area" class="btn btn-link text-white text-decoration-none"> Models </a>
             <a href="#" class="btn btn-link text-white text-decoration-none"> Authorized Dealer </a>
         </div>
-        <div class="logo">TOGG</div>
+        <div style="color: #F8F9FA;">MARKA</div>
         <div class="side-menu" id="user-area">
             <a href="sign_in.html" class="button"> Sign Up </a>
         </div>
     </div>
     <div id="successMessage" class="container text-center mt-2"></div>
+<!--======================================================================================================================================-->
 
     <header class="hero-section">
         <div class="content-box">
@@ -42,7 +43,7 @@
 
     </header>
 
-
+<!--======================================================================================================================================-->
     <div id="models-area" class="container mt-5">
         <br><br>
         <h2 class="text-center mb-4">Models</h2>
@@ -81,7 +82,7 @@
         </div>
     </div>
 
-
+<!--======================================================================================================================================-->
 
     <br>
 
@@ -108,19 +109,21 @@
 
     </div>
 
+<!--======================================================================================================================================-->
+
     <script>
         window.onload = function () {
             const kayitliIsim = localStorage.getItem("storedUserName");
             const userArea = document.getElementById("user-area");
 
             if (kayitliIsim && userArea) {
-                // İsim ve Yanına Çıkış İkonu Ekleme
+                
                 userArea.innerHTML = `
             <div class="d-flex align-items-center">
                 <span style="color: white; font-weight: bold; margin-right: 15px;">
-                    Hoş geldin, ${kayitliIsim}
+                    Welcome, ${kayitliIsim}
                 </span>
-                <a href="javascript:void(0)" onclick="cikisYap()" title="Çıkış Yap" style="color: white; font-size: 1.2rem;">
+                <a href="javascript:void(0)" onclick="cikisYap()" title="Sign Out" style="color: white; font-size: 1.2rem;">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </a>
             </div>
@@ -128,12 +131,11 @@
             }
         };
 
-        // Çıkış Yapma Fonksiyonu
+        
         function cikisYap() {
-            // 1. Tarayıcı hafızasındaki ismi sil
+            
             localStorage.removeItem("storedUserName");
 
-            // 2. Sayfayı yenile (Böylece "Sign Up" butonu geri gelir)
             window.location.reload();
         };
 
